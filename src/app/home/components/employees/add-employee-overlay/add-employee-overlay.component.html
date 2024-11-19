@@ -1,0 +1,107 @@
+<main (click)="closeOverlay(false, false, -1)">
+  <div
+    class="modal-inner-container"
+    [ngClass]="{ 'modal-animation': animation }"
+    (click)="$event.stopPropagation()"
+  >
+    <div class="left-frame-add">
+      
+      <div class="employee-info">
+        <h1>{{ edit ? "Edit employee" : "Add employee" }}</h1>
+        @if (!edit) {
+        
+        }
+      </div>
+    </div>
+
+    <div class="right-frame-add">
+      @if(!edit){
+      <div class="img-wrapper">
+        <img src="./assets/img/icons/default-user.svg" alt="" />
+      </div>
+      } @else if(employee) {
+      <div class="img-wrapper" [style.background-color]="employee.color">
+        {{ employee.initials }}
+      </div>
+      }@else {
+      <div class="img-wrapper">
+        <img src="./assets/img/icons/default-user.svg" alt="" />
+      </div>
+      }
+
+      <form
+        class="user-form"
+        [formGroup]="employeeForm"
+        (submit)="addOrEditemployee()"
+      >
+        <div class="input-wrapper">
+          <input
+            formControlName="name"
+            required
+            type="text"
+            placeholder="Name"
+          />
+          <img src="./assets/img/icons/user-icon.svg" alt="" />
+        </div>
+        <div class="input-wrapper">
+          <input
+            formControlName="email"
+            required
+            type="email"
+            placeholder="Email"
+          />
+          <img src="./assets/img/icons/login-email.svg" alt="" />
+        </div>
+        <div class="input-wrapper">
+          <input
+            formControlName="phone"
+            required
+            type="number"
+            placeholder="Phone"
+          />
+          <img src="./assets/img/icons/telephone.svg" alt="" />
+        </div>
+
+        <div class="button-wrapper">
+          @if (!edit) {
+          <app-button-with-icon
+            [content]="'Close'"
+            [colorStyle]="'secondary-color-style'"
+            [imgSrc]="'./assets/img/icons/cancel-icon.svg'"
+            (click)="closeOverlay(false, false, -1)"
+          ></app-button-with-icon>
+          }@else {
+          <app-button-with-icon
+            [content]="'Delete'"
+            [colorStyle]="'secondary-color-style'"
+            [imgSrc]="'./assets/img/icons/cancel-icon.svg'"
+            (click)="deleteemployee()"
+          ></app-button-with-icon>
+          } @if (!edit) {
+          <app-button-with-icon
+            [content]="'Create employee'"
+            [colorStyle]="'main-color-style'"
+            [imgSrc]="'./assets/img/icons/checkmark-icon.svg'"
+            [type]="'submit'"
+          ></app-button-with-icon>
+          }@else {
+          <app-button-with-icon
+            [content]="'Save'"
+            [colorStyle]="'main-color-style'"
+            [imgSrc]="'./assets/img/icons/checkmark-icon.svg'"
+            [type]="'submit'"
+          ></app-button-with-icon>
+          }
+        </div>
+      </form>
+    </div>
+
+    @if (edit) {
+    <img
+      class="cancel-btn"
+      src="./assets/img/icons/cancel-icon.svg"
+      alt="close"
+      (click)="closeOverlay(false, false, -1)"
+    />}
+  </div>
+</main>

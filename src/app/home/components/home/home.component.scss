@@ -1,0 +1,36 @@
+@import "../../../../styles.scss";
+@import "../../../../mixin.scss";
+
+.router-wrapper {
+  position: absolute;
+  left: 232px;
+  top: 95px;
+  width: calc(100vw - 232px);
+  width: calc(100svw - 232px);
+  min-height: calc(100vh - 95px);
+  min-height: calc(100svh - 95px);
+
+  @media (max-width: 850px) {
+    left: 0;
+    bottom: 90px;
+
+    width: 100vw;
+    width: 100svw;
+    min-height: calc(100vh - 95px - 90px);
+    min-height: calc(100svh - 95px - 90px);
+  }
+}
+
+app-sidebar {
+  @media (max-width: 850px) {
+    display: none;
+  }
+}
+
+app-nav-footer {
+  display: none;
+
+  @media (max-width: 850px) {
+    display: block;
+  }
+}

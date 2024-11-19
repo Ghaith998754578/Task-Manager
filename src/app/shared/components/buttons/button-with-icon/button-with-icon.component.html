@@ -1,0 +1,15 @@
+<button
+  [type]="type"
+  [ngClass]="[colorStyle, iconOnly ? 'icon-only-button' : '']"
+  [disabled]="diasbled"
+  [ngStyle]="getStyle()"
+>
+  @if (!iconOnly) {
+  {{ content }}
+  }
+  <img
+    [src]="imgSrc"
+    [style.width.px]="imgWidth"
+    [style.height.px]="imgHeight"
+  />
+</button>

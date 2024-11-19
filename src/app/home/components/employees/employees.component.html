@@ -1,0 +1,82 @@
+<main>
+  <app-button-with-icon
+    [content]="'New employee'"
+    [colorStyle]="'main-color-style'"
+    [imgSrc]="'./assets/img/icons/add-employee-icon.svg'"
+    (click)="toggleAddemployeeModal('open')"
+    id="newemployee"
+  ></app-button-with-icon>
+
+  <section class="employeesList">
+    @for (initial of initials; track $index) {
+    <div class="employee-wrapper">
+      <span class="seperator-list">{{ initial }}</span>
+      <div class="line-list"></div>
+
+      @for (employee of dataManager.useremployees; track $index) { @if
+      (employee.name.charAt(0).toUpperCase() === initial) {
+      <app-employee
+        (click)="toggleemployee(employee)"
+        [employee]="employee"
+        [active]="employee === currentemployee"
+      ></app-employee>
+      } }
+    </div>
+
+    }
+  </section>
+
+  <section id="employeesOverview">
+    <img
+      id="employeesBackImg"
+      class="employees-back"
+      (click)="toggleemployee()"
+      src="./assets/img/icons/arrow-left.svg"
+    />
+
+    <div id="sub-header" class="sub-header">
+      <h1>employees</h1>
+      <div class="line"></div>
+      
+    </div>
+
+    <div id="sub-header-mobile" class="sub-header">
+      <p>Kanban Project Managment Tool</p>
+      <h1>employees</h1>
+      
+      <div class="line"></div>
+    </div>
+
+    <div #currentemployeeDiv class="currentemployee">
+      @if (currentemployee) {<app-current-employee-display
+        [currentemployee]="currentemployee"
+        (openAddTaskEvent)="toggleAddTaskOverlay('open')"
+        (openEditemployeeEvent)="toggleEditemployeeModal('open')"
+        (deleteemployeeEvent)="toggleEditemployeeModal('close', $event)"
+      ></app-current-employee-display>
+      }
+    </div>
+  </section>
+
+  @if (addemployeeOverlayOpen) {
+  <app-add-employee-overlay
+    [animation]="addemployeeOverlayAnimation"
+    (closeOverlayEvent)="toggleAddemployeeModal('close', $event)"
+  ></app-add-employee-overlay>
+  } @if (editemployeeOverlayOpen) {
+  <app-add-employee-overlay
+    [animation]="editemployeeOverlayAnimation"
+    [employee]="currentemployee!"
+    [edit]="true"
+    (closeOverlayEvent)="toggleEditemployeeModal('close', $event)"
+  ></app-add-employee-overlay>
+  } @if (addTaskOverlayOpen) {
+  <div class="add-task-overlay-wrapper" (click)="toggleAddTaskOverlay('close')">
+    <app-add-task
+      [ngClass]="{ animate: addTaskOverlayAnimation }"
+      [overlay]="true"
+      (closeOverlayEvent)="toggleAddTaskOverlay('close')"
+    ></app-add-task>
+  </div>
+  }
+</main>

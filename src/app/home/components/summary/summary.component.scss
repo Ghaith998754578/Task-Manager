@@ -1,0 +1,148 @@
+@import "../../../../styles.scss";
+@import "../../../../mixin.scss";
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background-color: $bg-color;
+  padding: 50px;
+  min-height: calc(100vh - 95px);
+  min-height: calc(100svh - 95px);
+  overflow-x: hidden;
+
+  @media (max-width: 1100px) {
+    padding: 33px;
+  }
+
+  @media (max-width: 850px) {
+    min-height: unset;
+    height: calc(100vh - 95px - 90px);
+    height: calc(100svh - 95px - 90px);
+  }
+
+  .summary-head {
+    @include dFlex($jc: flex-start);
+
+    @media (max-width: 850px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    h1 {
+      font-size: 55px;
+
+      @media (max-width: 850px) {
+        margin: 20px 0;
+      }
+    }
+  }
+}
+
+.summary-container {
+  @include dFlex($jc: flex-start, $gp: 40px);
+
+  @media (min-width: 1200px) {
+    gap: 150px;
+  }
+
+  @media (max-width: 1100px) {
+    gap: 20px;
+  }
+
+  @media (max-width: 850px) {
+    justify-content: center;
+  }
+
+  .left-container {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    @media (max-width: 450px) {
+      display: flex;
+      align-items: center;
+    }
+
+    .first-line {
+      @include dFlex($jc: flex-start, $gp: 15px);
+
+      @media (max-width: 450px) {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    .third-line {
+      display: flex;
+      justify-content: flex-start;
+      gap: 30px;
+
+      @media (max-width: 450px) {
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .right-container {
+    @media (max-width: 850px) {
+      width: 100vw;
+      width: 100svw;
+      height: 100vh;
+      height: 100svh;
+      @include dFlex();
+      flex-direction: column;
+      flex-wrap: wrap;
+      background-color: $bg-color;
+      text-align: center;
+      animation: fadeOutGreeting 1s 1s ease-in forwards;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.greetings {
+  color: $main-color;
+  font-size: 45px;
+  font-weight: 400;
+
+  @media (max-width: 950px) {
+    font-size: 40px;
+  }
+
+  @media (max-width: 850px) {
+    font-size: 60px;
+  }
+}
+
+.user-name {
+  color: $secondary-color;
+  font-size: 60px;
+  font-weight: 700;
+  margin-top: 5px;
+
+  @media (max-width: 950px) {
+    font-size: 35px;
+  }
+
+  @media (max-width: 850px) {
+    font-size: 60px;
+  }
+}
+
+@keyframes fadeOutGreeting {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}

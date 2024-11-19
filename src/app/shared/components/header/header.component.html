@@ -1,0 +1,36 @@
+<header>
+ 
+  
+
+  <div class="right-frame">
+   
+
+    <div class="img-ellipse">
+      
+      <div class="img-profile-wrapper">
+        <div
+          (click)="toggleLogOutModal()"
+          id="default-profile"
+          [style.background-color]="dataManager.loggedInUser?.color"
+        >
+          {{ dataManager.loggedInUser?.initials }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @if (logOutModal) {
+
+  <div
+    id="log-out-modal-wrapper"
+    class="log-out-modal-wrapper"
+    (click)="toggleLogOutModal()"
+  >
+    <div class="log-out-modal">
+      
+      <span (click)="logout($event)">Log out</span>
+    </div>
+  </div>
+
+  }
+</header>

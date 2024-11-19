@@ -1,0 +1,35 @@
+<section>
+  <header>
+ 
+
+    @if(router.url === '/login' ){
+    <div class="signup-container desktop">
+      <app-button-wo-icon
+        [colorStyle]="'main-color-style'"
+        [fontSize]="'16px'"
+        [fontWeight]="'700'"
+        [content]="'sign up'"
+        [height]="'51px'"
+        [routerLink]="'/sign-up'"
+      ></app-button-wo-icon>
+    </div>
+    }
+  </header>
+
+  <ng-content></ng-content>
+
+  <div class="sign-up-wrapper">
+    @if(router.url === '/login' ){
+    <div class="signup-container mobile">
+      <app-button-wo-icon
+        [colorStyle]="'main-color-style'"
+        [fontSize]="'16px'"
+        [fontWeight]="'700'"
+        [content]="'sign up'"
+        [height]="'51px'"
+        [routerLink]="'/sign-up'"
+      ></app-button-wo-icon>
+    </div>
+    }
+  </div>
+</section>

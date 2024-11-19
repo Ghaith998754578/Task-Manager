@@ -1,0 +1,9 @@
+<div class="employee-container" [class.employee-container-focus]="active">
+  <div class="employee-avatar" [style.background-color]="employee.color">
+    <span>{{ employee.initials }}</span>
+  </div>
+  <div class="employeelist-data">
+    <span class="employee-name">{{ employee.name }}</span>
+    <span class="employee-email">{{ employee.email }}</span>
+  </div>
+</div>

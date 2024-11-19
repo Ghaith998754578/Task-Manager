@@ -1,0 +1,61 @@
+<main class="task-overlay" (click)="onCloseOverlay()">
+  <div (click)="$event.stopPropagation()">
+    <b class="overlay-headline">{{ task.title }}</b>
+    <p>{{ task.description }}</p>
+    <div class="overlay-due-date">
+      <b>Due date:</b>
+      <span>{{ task.dueDate }}</span>
+    </div>
+    <div class="overlay-prio">
+      <b>Priority:</b>
+      <div id="overlayPrioBox">
+        <div class="overview-prio-box" [ngClass]="task.prio">
+          <span>{{ task.prio }}</span>
+          <img
+            src="./assets/img/icons/{{ task.prio }}-prio-white-icon-small.svg"
+            alt="high-prio"
+          />
+        </div>
+      </div>
+    </div>
+    <b>Assigned To:</b>
+    <div id="assigned-to-box">
+      @for (user of task.assignedToUserSummarys; track $index) {
+      <div>
+        <div
+          [style.background-color]="user.color"
+          class="assigned-to-display-maximized"
+        >
+          {{ user.initials }}
+        </div>
+        <span>{{ user.firstName + " " + user.lastName }}</span>
+      </div>
+      }
+    </div>
+    <div id="subtaskBoxWrapper" class="add-task-overlay-input-box">
+      <b>Subtasks</b>
+      <div id="subtask-box-overlay">
+        @for (subtask of task.subtasks; track $index) {
+        <label (change)="updateTask(subtask)"
+          ><input [checked]="subtask.complete" type="checkbox" />
+          {{ subtask.title }}</label
+        >
+        }
+      </div>
+    </div>
+    <img
+      (click)="onCloseOverlay()"
+      class="overlay-close-button"
+      src="./assets/img/icons/x-icon.svg"
+      alt="X"
+    />
+    <div class="overlayy-delete-edit-box">
+      <div (click)="deleteTask()" class="overlay-delete-box">
+        <img src="./assets/img/icons/trash-bin.svg" alt="" />
+      </div>
+      <div (click)="openEditTaskOverlay()" class="overlay-edit-box">
+        <img src="./assets/img/icons/bord-overlay-edit-pencil.svg" alt="" />
+      </div>
+    </div>
+  </div>
+</main>

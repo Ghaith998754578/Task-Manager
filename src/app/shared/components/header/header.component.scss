@@ -1,0 +1,134 @@
+@import "../../../../styles.scss";
+@import "../../../../mixin.scss";
+
+header {
+  @include dFlex($jc: space-between);
+  position: fixed;
+  top: 0;
+  left: 232px;
+  right: 0;
+  height: 95px;
+  padding: 20px 36px 20px calc(348px - 232px);
+  font-size: 21px;
+  color: black;
+  background-color: white;
+  box-shadow: $barra-superior;
+  z-index: 101;
+
+  @media (max-width: 850px) {
+    left: 0;
+    padding: 0 20px;
+  }
+
+  .header-logo {
+    height: 55px;
+    display: none;
+
+    @media (max-width: 850px) {
+      display: block;
+    }
+  }
+
+  > span {
+    @media (max-width: 850px) {
+      display: none;
+    }
+  }
+
+  .right-frame {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    a {
+      height: max-content;
+
+      @media screen and (max-width: 850px) {
+        display: none;
+      }
+    }
+  }
+
+  .img-ellipse {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 26px;
+
+    #default-profile {
+      @include dFlex();
+      position: absolute;
+      width: 47px;
+      height: 47px;
+      border-radius: 50%;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      cursor: pointer;
+      font-weight: 400;
+      color: white;
+      font-size: 21px;
+    }
+
+    #img-profile {
+      position: absolute;
+      border-radius: 50%;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 47px;
+      height: 47px;
+      margin: auto;
+      cursor: pointer;
+    }
+  }
+}
+
+.log-out-modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+}
+
+.log-out-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  position: absolute;
+  top: 55px;  /* Adjusted to be closer to the profile image */
+  right: 10px; /* Adjusted to be closer to the profile image */
+  min-width: 140px;
+  padding: 16px 21px;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: lighter;
+  text-align: center;
+  color: white;
+  background-color: $main-color;
+  border-radius: 20px;
+  border-top-right-radius: 0;
+  text-decoration: none;
+  outline: 1px solid white;
+}
+
+.log-out-modal > * {
+  cursor: pointer;
+}
+
+.log-out-modal a {
+  text-decoration: none;
+  color: white;
+  display: none;
+
+  @media (max-width: 850px) {
+    display: block;
+  }
+}

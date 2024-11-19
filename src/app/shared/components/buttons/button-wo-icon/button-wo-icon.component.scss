@@ -1,0 +1,49 @@
+@import "./../../../../../styles.scss";
+@import "./../../../../../mixin.scss";
+
+button {
+  @include dFlex();
+  cursor: pointer;
+  padding: 4px 18px;
+  flex-shrink: 0;
+  border: unset;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all ease-in-out 100ms;
+
+  &:disabled {
+    background-color: lightgrey;
+    pointer-events: none;
+  }
+}
+
+.main-color-style {
+  background-color: $main-color;
+  color: white;
+
+  &:hover {
+    background-color: $secondary-color;
+    box-shadow: $button-box-shadow;
+  }
+
+  &:active {
+    background: $sidebar-focus-color;
+  }
+}
+
+.secondary-color-style {
+  outline: 1px solid $main-color;
+  color: $main-color;
+  background: none;
+
+  &:hover {
+    color: $secondary-color;
+    outline: 2px solid $secondary-color;
+    box-shadow: $button-box-shadow;
+  }
+
+  &:active {
+    outline: 1px solid $sidebar-focus-color;
+    color: $sidebar-focus-color;
+  }
+}

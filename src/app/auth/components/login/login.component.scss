@@ -1,0 +1,101 @@
+@import "./../../../../styles.scss";
+@import "./../../../../mixin.scss";
+
+main {
+  @include dFlex($gp: 35px);
+  flex-direction: column;
+  min-width: 653px;
+  width: max-content;
+  height: max-content;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: $shadoe-backlog-box;
+  padding: 35px;
+  position: relative;
+
+  h1 {
+    font-size: 61px;
+    margin-top: 0;
+    margin-bottom: 24px;
+
+    @media screen and (max-width: 850px) {
+      font-size: 40px;
+      text-align: center;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -24px;
+      width: 150px;
+      height: 3px;
+      background-color: $secondary-color;
+    }
+  }
+
+  .btn-container {
+    @include dFlex($gp: 35px);
+
+    @media screen and (max-width: 850px) {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}
+
+.user-form {
+  @include dFlex($gp: 16px);
+  flex-direction: column;
+  width: 422px;
+
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .input-wrapper {
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 26.5px;
+      right: 21px;
+      transform: translateY(-50%);
+
+      @media screen and (max-width: 850px) {
+        top: 22.5px;
+      }
+    }
+
+    .error-msg {
+      position: absolute;
+      font-size: 12px;
+      color: $error-color;
+    }
+
+    input {
+      width: 422px;
+      padding: 13px 41px 13px 21px;
+      border-radius: 10px;
+      font-size: 21px;
+      border: 1px solid $sidebar-text-color;
+
+      @media screen and (max-width: 850px) {
+        width: 100%;
+        padding: 8px 41px 8px 21px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-size: 21px;
+        color: $sidebar-text-color;
+      }
+    }
+  }
+}
+

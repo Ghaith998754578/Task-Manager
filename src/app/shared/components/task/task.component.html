@@ -1,0 +1,56 @@
+<div class="task">
+  <div id="mobileBox${index}" class="mobile-category-box">
+    @if (task.status !== 'todo') {
+      <img
+        (click)="changeStatusMobile($event, previousStatus)"
+        style="transform: rotate(90deg)"
+        src="./assets/img/icons/arrow-left.svg"
+        alt=""
+      />
+    }
+    @if (task.status !== 'done') {
+      <img
+        (click)="changeStatusMobile($event, nextStatus)"
+        style="transform: rotate(-90deg)"
+        src="./assets/img/icons/arrow-left.svg"
+        alt=""
+      />
+    }
+  </div>
+
+  <div class="task-title-description-box">
+    <b>{{ task.title }}</b>
+    <p>{{ task.description }}</p>
+  </div>
+
+  @if (task.subtasks.length > 0) {
+    <div class="subtask-box">
+      <div class="progress-bar-box">
+        <div
+          [style.width.%]="completedSubtasksPercent"
+          class="progress-bar-bar"
+        ></div>
+      </div>
+      <div class="subtask-text-box">
+        <span>{{ completedSubtasks }}/{{ task.subtasks.length }}</span>
+        <span>Done</span>
+      </div>
+    </div>
+  }
+
+  <div class="assign-and-prio-box">
+    <div class="assigned-to-overview-box">
+      @for (user of task.assignedToUserSummarys; track $index) {
+        @if (isUserSummary(user)) {
+          <span class="assigned-to-display">{{ user.initials }}</span>
+        }
+      }
+    </div>
+    <div class="task-prio-box">
+      <img
+        src="./assets/img/icons/{{ task.prio }}-prio-icon-small.svg"
+        alt="prio"
+      />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,148 @@
+@import "./../../../../../styles.scss";
+@import "./../../../../../mixin.scss";
+
+/* First Child */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+
+  div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 54px;
+
+    h3 {
+      font-size: 47px;
+      font-weight: 500;
+      margin: 0;
+      word-break: break-word;
+
+      @media screen and (max-width: 850px) {
+        font-size: 36px;
+      }
+    }
+
+    span svg path {
+      stroke: $secondary-color;
+    }
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      gap: 13px;
+      color: $secondary-color;
+
+      &:hover {
+        font-weight: 600;
+        cursor: pointer;
+
+        svg path {
+          stroke-width: 3;
+        }
+      }
+    }
+  }
+
+  /* Second Child */
+
+  > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    height: 74px;
+    gap: 59px;
+
+    > span:first-child {
+      font-size: 21px;
+      font-weight: 400;
+    }
+
+    > span:last-child {
+      @media screen and (max-width: 1100px) {
+        display: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: $secondary-color;
+        font-weight: 600;
+
+        svg path {
+          fill: $secondary-color;
+        }
+      }
+    }
+
+    span svg {
+      margin-right: 6px;
+    }
+  }
+
+  /* Third & Fourth Child*/
+
+  > div:nth-child(3) {
+    a {
+      display: inline-flex;
+      margin-top: 15px;
+      text-decoration: none;
+      color: rgb(23, 118, 233);
+    }
+  }
+
+  div:nth-child(4) {
+    a {
+      display: inline-flex;
+      text-decoration: none;
+      color: rgb(23, 118, 233);
+      margin-top: 15px;
+    }
+  }
+}
+
+.img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background-color: #d1d1d1;
+  border: 2px solid white;
+  box-shadow: $nuevo;
+  color: white;
+  font-size: 47px;
+  aspect-ratio: 1 / 1;
+
+  @media screen and (max-width: 850px) {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.mobile-addons {
+  display: none;
+
+  @media screen and (max-width: 1100px) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+
+    .mobile-employee-btn-container {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      height: auto;
+      display: flex;
+      gap: 15px !important;
+      flex-direction: column;
+    }
+  }
+}

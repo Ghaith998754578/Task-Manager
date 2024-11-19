@@ -1,0 +1,12 @@
+@import "../../../../styles.scss";
+@import "../../../../mixin.scss";
+
+section {
+  @include dFlex($gp: 25px);
+  background-color: $main-color;
+  color: white;
+  font-size: 20px;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: $nuevo;
+}

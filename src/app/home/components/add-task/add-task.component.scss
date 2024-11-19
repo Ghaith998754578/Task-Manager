@@ -1,0 +1,399 @@
+@import "../../../../styles.scss";
+@import "../../../../mixin.scss";
+
+.no-padding {
+  padding: 0 !important;
+}
+
+main {
+  @include dFlex($jc: space-evenly);
+  flex-direction: column;
+  min-height: calc(100vh - 95px);
+  min-height: calc(100svh - 95px);
+  position: relative;
+  font-size: 21px;
+  background-color: $bg-color;
+  overflow-x: hidden;
+
+  @media screen and (max-width: 850px) {
+    min-height: unset;
+    height: calc(100vh - 95px - 90px);
+    height: calc(100svh - 95px - 90px);
+    justify-content: flex-start;
+  }
+
+  h1 {
+    font-size: 47px;
+    font-weight: 700;
+    margin-bottom: 40px;
+
+    @media screen and (max-width: 1200px) {
+      padding-top: 20px;
+    }
+
+    @media screen and (max-width: 850px) {
+      padding-top: 70px;
+
+      &::before {
+        content: "Kanban Project Management Tool";
+        position: absolute;
+        font-size: 16px;
+        font-weight: 400;
+        top: 30px;
+      }
+    }
+  }
+}
+
+.overlay-main {
+  background-color: white;
+  padding: 60px;
+  border-radius: 30px;
+  min-height: unset;
+  box-shadow: $nuevo;
+
+  @media screen and (max-width: 1100px) {
+    height: 90vh;
+    height: 90svh;
+    overflow: auto;
+    justify-content: flex-start;
+    padding: 45px;
+    overflow-x: hidden;
+  }
+
+  @media screen and (max-width: 850px) {
+    position: absolute;
+    top: 95px;
+    left: 0;
+    right: 0;
+    height: calc(100vh - 95px - 90px);
+    height: calc(100svh - 95px - 90px);
+    border-radius: unset;
+    background-color: $bg-color;
+  }
+
+  h1 {
+    padding: 0;
+
+    @media screen and (max-width: 850px) {
+      &::before {
+        content: "";
+      }
+    }
+  }
+
+  form {
+    min-height: unset;
+    padding: 0;
+
+    @media screen and (max-width: 1200px) {
+      flex-direction: row;
+      gap: 0;
+    }
+
+    @media screen and (max-width: 1100px) {
+      flex-direction: column;
+      gap: 14px;
+    }
+  }
+
+  .seperator {
+    @media screen and (max-width: 1200px) {
+      display: flex !important;
+    }
+
+    @media screen and (max-width: 1100px) {
+      display: none !important;
+    }
+  }
+
+  .button-box {
+    @media screen and (max-width: 1200px) {
+      justify-content: flex-end;
+    }
+
+    @media screen and (max-width: 1100px) {
+      justify-content: center;
+    }
+  }
+
+  .close-button {
+    position: absolute;
+    top: 45px;
+    right: 45px;
+    cursor: pointer;
+    display: none;
+
+    @media screen and (max-width: 850px) {
+      display: block;
+    }
+  }
+}
+
+section {
+  @media screen and (max-width: 850px) {
+    width: 90%;
+  }
+}
+
+input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+/* ===== Form Selectors =====*/
+
+form {
+  display: flex;
+  min-height: 600px;
+  padding-bottom: 20px;
+
+  @media screen and (max-width: 1200px) {
+    gap: 14px;
+    flex-direction: column;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+  }
+
+  label {
+    font-size: 21px;
+    color: rgba(0, 0, 0, 1);
+  }
+
+  input[type="text"],
+  input[type="date"] {
+    height: 51px;
+  }
+
+  textarea {
+    height: 119px;
+    resize: none;
+  }
+
+  input,
+  textarea {
+    padding: 13px 21px;
+    border-radius: 10px;
+    outline: unset;
+    border: 1px solid $sidebar-text-color;
+    background-color: white;
+    font-size: 21px;
+
+    &::placeholder {
+      font-size: 21px;
+      color: $sidebar-text-color;
+    }
+  }
+
+  input[type="date"]:invalid::-webkit-datetime-edit {
+    color: $sidebar-text-color;
+    font-size: 21px;
+  }
+}
+
+/* ===== Form Classes & ID´s ===== */
+
+.seperator {
+  margin: 0px 25px;
+  border-left: 1px solid rgba(209, 209, 209, 1);
+  height: 501px;
+
+  @media screen and (max-width: 1200px) {
+    display: none !important;
+  }
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.input-with-icons {
+  position: relative;
+
+  > input {
+    width: 100%;
+    padding-right: 80px;
+  }
+
+  > div {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+  }
+}
+
+.input-icon-box {
+  @include dFlex();
+
+  > div {
+    border-left: 1px solid black;
+    height: 25px;
+    margin: 0 8px;
+  }
+}
+
+.label {
+  font-size: 21px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.form-right-box {
+  justify-content: space-between;
+
+  .form-right-top-box {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .button-box {
+    @include dFlex($jc: end, $gp: 25px);
+
+    @media screen and (max-width: 1200px) {
+      justify-content: center;
+    }
+  }
+}
+
+#prio-box {
+  display: flex;
+  gap: 10px;
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+
+    div {
+      width: 100%;
+    }
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 10px;
+    height: 51px;
+    width: 136px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: $nuevo;
+    cursor: pointer;
+
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
+  }
+}
+
+#assigned-to {
+  display: flex;
+  flex-direction: column;
+}
+
+.assigned-to-display-wrapper {
+  @include dFlex($gp: 4px);
+
+  .assigned-to-display {
+    @include dFlex();
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+  }
+}
+
+#subtask-box {
+  display: flex;
+  flex-direction: column;
+}
+
+#subtask-box > label {
+  display: flex;
+  gap: 20px;
+}
+
+
+
+#assigned-to label {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.open-arrow {
+  width: 16px;
+  height: 16px;
+}
+
+.active {
+  border: 1px solid black;
+}
+
+.active-color {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.subtask-img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+#color-picker-box {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.color-picker-color {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.error-msg-task {
+  color: $error-color;
+  font-size: 12px;
+}
+
+app-success-message {
+  position: fixed;
+  transition: 225ms ease-in-out;
+  bottom: -100%;
+}
+
+.confirm-animation {
+  display: block;
+  bottom: 15%;
+}
+
+/* Prio Colors */
+
+.high {
+  background-color: rgb(255, 61, 0) !important;
+  color: white;
+}
+
+.medium {
+  background-color: rgb(255, 168, 0) !important;
+  color: white;
+}
+
+.low {
+  background-color: rgb(122, 226, 41) !important;
+  color: white;
+}

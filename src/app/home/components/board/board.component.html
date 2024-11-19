@@ -1,0 +1,118 @@
+<main
+  id="boardMain"
+  [ngClass]="{ 'stop-scroll': overlayTask || activeEditTask || addTaskOverlay }"
+>
+  <div class="board-header">
+    <h1>Board</h1>
+    <div>
+      <div class="input-wrapper">
+        <input
+          [(ngModel)]="searchTerm"
+          (input)="searchTask()"
+          placeholder="Find Task"
+          type="text"
+        />
+        <div>
+          <img src="./assets/img/icons/magnifying-glass.svg" alt="search" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="drag-and-drop-container">
+    <div class="drag-and-drop-row">
+      <div class="drag-and-drop-header">
+        <span>To do</span>
+      </div>
+      <div
+        #todoArea
+        (drop)="moveTo(todoArea, 'todo')"
+        (dragleave)="toggleDropareaHoverEffect(todoArea, 'remove')"
+        (dragover)="allowDrop($event, todoArea)"
+        class="drag-area"
+      >
+        @for (task of todoTasks; track $index) {
+        <app-task
+          draggable="true"
+          (dragstart)="startDragging(task)"
+          [task]="task"
+          [nextStatus]="'in-progress'"
+          (taskUpdated)="filterAndUpdate($event)"
+          (click)="openTask(task)"
+        ></app-task>
+        }
+      </div>
+    </div>
+
+    <div class="drag-and-drop-row">
+      <div class="drag-and-drop-header">
+        <span>In progress</span>
+      </div>
+      <div
+        #inProgressArea
+        (drop)="moveTo(inProgressArea, 'in-progress')"
+        (dragleave)="toggleDropareaHoverEffect(inProgressArea, 'remove')"
+        (dragover)="allowDrop($event, inProgressArea)"
+        class="drag-area"
+      >
+        @for (task of inProgressTasks; track $index) {
+        <app-task
+          draggable="true"
+          (dragstart)="startDragging(task)"
+          [task]="task"
+          
+          [previousStatus]="'todo'"
+          (taskUpdated)="filterAndUpdate($event)"
+          (click)="openTask(task)"
+        ></app-task>
+        }
+      </div>
+    </div>
+
+    <div class="drag-and-drop-row">
+      <div class="drag-and-drop-header">
+        <span>Done</span>
+      </div>
+      <div
+        #doneArea
+        (dragleave)="toggleDropareaHoverEffect(doneArea, 'remove')"
+        (drop)="moveTo(doneArea, 'done')"
+        (dragover)="allowDrop($event, doneArea)"
+        class="drag-area"
+      >
+        @for (task of doneTasks; track $index) {
+        <app-task
+          draggable="true"
+          (dragstart)="startDragging(task)"
+          [task]="task"
+         
+          (taskUpdated)="filterAndUpdate($event)"
+          (click)="openTask(task)"
+        ></app-task>
+        }
+      </div>
+    </div>
+  </section>
+
+  @if (overlayTask) {
+  <app-task-overlay
+    [task]="overlayTask"
+    (closeOverlay)="overlayTask = null"
+    (openEditOverlay)="openEditTaskOverlay($event)"
+    (updateSubtask)="filterAndUpdate($event)"
+  ></app-task-overlay>
+  } @if(activeEditTask) {
+  <!-- <app-edit-task-overlay
+    [task]="activeEditTask"
+    (closeOverlay)="activeEditTask = null"
+  ></app-edit-task-overlay> -->
+  } @if (addTaskOverlay) {
+  <div class="add-task-overlay-wrapper" (click)="closeAddTaskOverlay()">
+    <app-add-task
+      [ngClass]="{ animate: addTaskOverlayAnimation }"
+      [overlay]="true"
+      [taskStatus]="addTaskOverlayStatus"
+      (closeOverlayEvent)="closeAddTaskOverlay()"
+    ></app-add-task>
+  </div>
+  }
+</main>

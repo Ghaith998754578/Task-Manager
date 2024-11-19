@@ -1,0 +1,67 @@
+@import "./../../../../styles.scss";
+@import "./../../../../mixin.scss";
+
+section {
+  position: relative;
+  width: 100vw;
+  width: 100svw;
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: $bg-color;
+  @include dFlex($jc: space-between, $gp: 16px);
+  flex-direction: column;
+}
+
+header {
+  @include dFlex($jc: space-between);
+  padding: 16px 16px 0 16px;
+  width: 100%;
+
+  .logo-wrapper {
+    display: none; 
+    height: 0;
+    width: 0;
+    overflow: hidden;
+  }
+}
+
+.legal-sign-up-wrapper {
+  @include dFlex($gp: 8px);
+  flex-direction: column;
+}
+
+.signup-container {
+  @include dFlex($gp: 35px, $jc: flex-start);
+
+  span {
+    font-size: 21px;
+  }
+}
+
+.desktop {
+  @media screen and (max-width: 850px) {
+    display: none !important;
+  }
+}
+
+.mobile {
+  gap: 16px;
+  @media screen and (min-width: 850px) {
+    display: none;
+  }
+}
+
+.legal-wrapper {
+  @include dFlex($gp: 8px);
+  padding-bottom: 16px;
+
+  a {
+    font-size: 16px;
+    text-decoration: none;
+    color: rgba(168, 168, 168, 1);
+  }
+}
+
+.hide {
+  display: none;
+}

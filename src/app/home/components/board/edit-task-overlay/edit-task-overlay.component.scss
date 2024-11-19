@@ -1,0 +1,168 @@
+@import "../../../../../styles.scss";
+@import "../../../../../mixin.scss";
+
+.task-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @include dFlex();
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 110;
+
+  > form {
+    max-height: 90vh;
+    max-height: 90svh;
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 50px;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: $nuevo;
+    font-size: 21px;
+    position: relative;
+    overflow-y: auto;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+    }
+
+    label {
+      font-size: 21px;
+      color: black;
+    }
+
+    input,
+    textarea {
+      padding: 13px 21px;
+      border-radius: 10px;
+      outline: unset;
+      border: 1px solid $sidebar-text-color;
+      background-color: white;
+      font-size: 21px;
+
+      &::placeholder {
+        font-size: 21px;
+        color: $sidebar-text-color;
+      }
+    }
+
+    input[type="text"],
+    input[type="date"] {
+      height: 51px;
+      width: 100%;
+    }
+
+    input[type="date"]:invalid::-webkit-datetime-edit {
+      color: $sidebar-text-color;
+      font-size: 21px;
+    }
+
+    textarea {
+      height: 119px;
+      resize: none;
+    }
+
+    #prio-box {
+      display: flex;
+      gap: 10px;
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 18px 10px;
+        height: 51px;
+        width: 136px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: $nuevo;
+        cursor: pointer;
+      }
+    }
+
+    #assigned-to {
+      display: flex;
+      flex-direction: column;
+      min-height: 51px;
+      padding: 13px 21px;
+      border-radius: 10px;
+      outline: unset;
+      border: 1px solid $sidebar-text-color;
+      background-color: white;
+      cursor: pointer;
+
+      label {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+.edit-submit-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.overlay-close-button {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+}
+
+#edit-assigned-users-box {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+
+  .assigned-to-display {
+    @include dFlex();
+    width: 45px;
+    height: 45px;
+    border-radius: 58px;
+    border: 1px solid white;
+    color: white;
+    font-size: 16px;
+  }
+}
+
+.error-msg-task {
+  color: $error-color;
+  font-size: 12px;
+}
+
+/* Prio Colors */
+
+.high {
+  background-color: rgb(255, 61, 0) !important;
+  color: white;
+}
+
+.medium {
+  background-color: rgb(255, 168, 0) !important;
+  color: white;
+}
+
+.low {
+  background-color: rgb(122, 226, 41) !important;
+  color: white;
+}

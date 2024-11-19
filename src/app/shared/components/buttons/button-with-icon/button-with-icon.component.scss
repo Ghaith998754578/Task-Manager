@@ -1,0 +1,71 @@
+@import "./../../../../../styles.scss";
+@import "./../../../../../mixin.scss";
+
+button {
+  @include dFlex($gp: 10px);
+
+  cursor: pointer;
+  flex-shrink: 0;
+  border: unset;
+  border-radius: 10px;
+  transition: all ease-in-out 100ms;
+
+  font-size: 21px;
+
+  &:disabled {
+    background-color: lightgrey;
+    pointer-events: none;
+  }
+}
+
+.icon-only-button {
+  padding: 8px !important;
+  height: 51px !important;
+  width: 51px !important;
+}
+
+.main-color-style {
+  background-color: $main-color;
+  color: white;
+  font-weight: 700;
+  height: 55px;
+  padding: 18px 15px;
+
+  &:hover {
+    background-color: $secondary-color;
+    box-shadow: $button-box-shadow;
+  }
+
+  &:active {
+    background: $sidebar-focus-color;
+  }
+}
+
+.secondary-color-style {
+  width: 136px;
+  height: 55px;
+  padding: 18px 10px;
+  outline: 1px solid $main-color;
+  color: $main-color;
+  background: none;
+
+  &:hover {
+    color: $secondary-color;
+    outline: 2px solid $secondary-color;
+    box-shadow: $button-box-shadow;
+
+    img {
+      filter: invert(47%) sepia(28%) saturate(5405%) hue-rotate(164deg)
+        brightness(101%) contrast(101%);
+    }
+  }
+
+  &:active {
+    outline: 1px solid $sidebar-focus-color;
+    color: $sidebar-focus-color;
+
+    img {
+      filter: none;
+    }
+  }
+}

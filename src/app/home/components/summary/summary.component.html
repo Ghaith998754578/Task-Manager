@@ -1,0 +1,65 @@
+<main>
+  <div class="summary-head">
+   
+    <h1 class="summary-h1">Summary</h1>
+    
+  </div>
+
+  <div class="summary-container">
+    <div class="left-container">
+      <div class="first-line">
+        <app-summary-card
+          [type]="'simple-card'"
+          [content]="'Tasks in Board'"
+          [routeTo]="'board'"
+          [number]="tasksInBoard"
+        ></app-summary-card>
+
+        <app-summary-card
+          [type]="'simple-card'"
+          [content]="'Tasks in Progress'"
+          [routeTo]="'board'"
+          [number]="tasksInProgress"
+        ></app-summary-card>
+
+        
+      </div>
+
+      <app-summary-card
+        [type]="'urgent-card'"
+        
+        [routeTo]="'board'"
+        [number]="highPrioTasks"
+      ></app-summary-card>
+
+      <div class="third-line">
+        <app-summary-card
+          [type]="'icon-card'"
+          [content]="'To-do'"
+          [routeTo]="'board'"
+          [imgPath]="'./assets/img/icons/pencil.svg'"
+          [number]="tasksToDo"
+        ></app-summary-card>
+
+        <app-summary-card
+          [type]="'icon-card'"
+          [content]="'Done'"
+          [routeTo]="'board'"
+          [imgPath]="'./assets/img/icons/checkmark-summary.svg'"
+          [number]="TasksDone"
+        ></app-summary-card>
+      </div>
+    </div>
+
+    <div class="right-container">
+      <p class="greetings" id="greetings">{{ getGreeting() }}</p>
+      <p class="user-name" id="user-name">
+        {{
+          dataManager.loggedInUser?.firstName +
+            " " +
+            dataManager.loggedInUser?.lastName
+        }}
+      </p>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,175 @@
+<app-auth-base>
+  <main class="login-modal sign-up-modal">
+    <h1>Sign Up</h1>
+
+    <a href="index.html">
+      <img
+        class="back-arrow"
+        src="assets/img/icons/sign-up-arrow-left.svg"
+        alt="Arrow to get back"
+        title="Arrow to get back"
+      />
+    </a>
+
+    <form
+      [formGroup]="signUpForm"
+      class="user-form"
+      id="login-form"
+      (ngSubmit)="signUp()"
+    >
+      <div class="input-wrapper">
+        <input
+          required
+          formControlName="username"
+          type="text"
+          placeholder="Username"
+          (input)="resetError('username')"
+        />
+        <img src="assets/img/icons/sign-up-name.svg" alt="" />
+
+        <div *ngIf="username?.touched && username?.value.length === 0">
+          <div class="error-msg">Please enter a username</div>
+        </div>
+        <div *ngIf="username?.touched && !username?.valid && !loading">
+          <div class="error-msg">Please use a single word</div>
+        </div>
+        <div *ngIf="usernameHttpErrorCode === 409">
+          <div class="error-msg">This username is already taken</div>
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <input
+          required
+          formControlName="firstName"
+          type="text"
+          placeholder="First Name"
+          (input)="resetError('firstName')"
+        />
+        <img src="assets/img/icons/sign-up-name.svg" alt="" />
+
+        <div *ngIf="firstName?.touched && firstName?.value.length === 0">
+          <div class="error-msg">Please enter your First Name</div>
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <input
+          required
+          formControlName="lastName"
+          type="text"
+          placeholder="Last Name"
+          (input)="resetError('lastName')"
+        />
+        <img src="assets/img/icons/sign-up-name.svg" alt="" />
+
+        <div *ngIf="lastName?.touched && lastName?.value.length === 0">
+          <div class="error-msg">Please enter your Last Name</div>
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <input
+          required
+          formControlName="email"
+          type="email"
+          placeholder="Email"
+          (input)="resetError('email')"
+        />
+        <img src="assets/img/icons/login-email.svg" alt="" />
+
+        <div *ngIf="email?.touched && email?.value.length === 0">
+          <div class="error-msg">Please enter an email address.</div>
+        </div>
+        <div *ngIf="email?.touched && !email?.valid && !loading">
+          <div class="error-msg">Please enter a valid E-Mail address</div>
+        </div>
+        <div *ngIf="emailHttpErrorCode === 409">
+          <div class="error-msg">This email address already exists</div>
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <input
+          formControlName="password"
+          required
+          [type]="passwordIsHidden ? 'password' : 'text'"
+          placeholder="Password"
+        />
+        <img
+          *ngIf="password?.value.length > 0 && !passwordIsHidden"
+          (click)="togglePasswordVisibility()"
+          src="./assets/img/icons/login-password-show.svg"
+          alt=""
+          [style.cursor]="'pointer'"
+        />
+        <img
+          *ngIf="password?.value.length > 0 && passwordIsHidden"
+          (click)="togglePasswordVisibility()"
+          src="./assets/img/icons/login-password-hidden.svg"
+          alt=""
+          [style.cursor]="'pointer'"
+        />
+        <img
+          *ngIf="password?.value.length === 0"
+          id="loginPwImg"
+          src="./assets/img/icons/login-password.svg"
+          alt=""
+        />
+        <div *ngIf="password?.touched && password?.value.length === 0">
+          <div class="error-msg">Please enter a password</div>
+        </div>
+        <div *ngIf="password?.touched && !password?.valid && password?.value.length > 0 && !loading">
+          <div class="error-msg">Must be at least 8 characters.</div>
+        </div>
+      </div>
+
+      <div class="input-wrapper">
+        <input
+          formControlName="passwordRepeat"
+          required
+          [type]="passwordRepeatIsHidden ? 'password' : 'text'"
+          placeholder="Confirm Password"
+        />
+        <img
+          *ngIf="passwordRepeat?.value.length > 0 && !passwordRepeatIsHidden"
+          (click)="togglePasswordRepeatVisibility()"
+          src="./assets/img/icons/login-password-show.svg"
+          alt=""
+          [style.cursor]="'pointer'"
+        />
+        <img
+          *ngIf="passwordRepeat?.value.length > 0 && passwordRepeatIsHidden"
+          (click)="togglePasswordRepeatVisibility()"
+          src="./assets/img/icons/login-password-hidden.svg"
+          alt=""
+          [style.cursor]="'pointer'"
+        />
+        <img
+          *ngIf="passwordRepeat?.value.length === 0"
+          id="loginPwImg"
+          src="./assets/img/icons/login-password.svg"
+          alt=""
+        />
+        <div *ngIf="passwordRepeat?.touched && passwordRepeat?.value.length === 0">
+          <div class="error-msg">Please repeat your password</div>
+        </div>
+        <div *ngIf="passwordRepeat?.touched && passwordRepeat?.value.length > 0 && passwordRepeat?.value !== password?.value">
+          <div class="error-msg">This does not match password.</div>
+        </div>
+      </div>
+
+      <div class="btn-container">
+        <app-button-wo-icon
+          [colorStyle]="'main-color-style'"
+          [fontSize]="buttonFontSize"
+          [fontWeight]="'700'"
+          [content]="'Sign Up'"
+          [height]="buttonHeight"
+          [width]="buttonWidth"
+          [type]="'submit'"
+        ></app-button-wo-icon>
+      </div>
+    </form>
+  </main>
+</app-auth-base>

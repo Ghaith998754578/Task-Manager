@@ -1,0 +1,114 @@
+@import "../../../../styles.scss";
+@import "../../../../mixin.scss";
+
+.task {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 19px;
+  width: 100%;
+  background: white;
+  border-radius: 30px;
+  box-shadow: $shadoe-backlog-box;
+  cursor: pointer;
+  position: relative;
+}
+
+.mobile-category-box {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  @media screen and (max-width: 1350px) {
+    display: block;
+  }
+
+  img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+
+
+.task-title-description-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  b {
+    color: $main-color;
+    word-wrap: break-word;
+  }
+
+  p {
+    color: rgba(168, 168, 168, 1);
+    line-height: 120%;
+    word-wrap: break-word;
+  }
+}
+
+.subtask-box {
+  @include dFlex($jc: space-between);
+
+  @media screen and (max-width: 1350px) {
+    gap: 4px;
+  }
+}
+
+.progress-bar-box {
+  width: 138px;
+  height: 8px;
+  background-color: rgba(244, 244, 244, 1);
+
+  @media screen and (max-width: 1350px) {
+    width: 90%;
+  }
+
+  div {
+    background-color: rgba(41, 171, 226, 1);
+    height: 100%;
+    width: 0%;
+  }
+}
+
+.subtask-text-box {
+  @include dFlex($gp: 4px);
+  flex-wrap: nowrap;
+  font-size: 12px;
+}
+
+.assign-and-prio-box {
+  @include dFlex($jc: space-between);
+}
+
+.assigned-to-overview-box {
+  display: flex;
+  width: 80%;
+  overflow-x: auto;
+
+  & > span:not(:first-child) {
+    margin-left: -10px;
+  }
+}
+
+.assigned-to-display {
+  @include dFlex();
+  width: 35px;
+  height: 35px;
+  border-radius: 58px;
+  border: 1px solid white;
+  color: white;
+  font-size: 12px;
+  flex: 0 0 auto;
+}
+
+.task-prio-box {
+  width: 32px;
+}

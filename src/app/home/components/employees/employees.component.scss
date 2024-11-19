@@ -1,0 +1,239 @@
+@import "./../../../../styles.scss";
+@import "./../../../../mixin.scss";
+
+app-employee {
+  width: 100%;
+}
+
+main {
+  display: flex;
+  height: calc(100vh - 95px);
+  height: calc(100svh - 95px);
+  background-color: $bg-color;
+  overflow: hidden;
+  position: relative;
+
+  @media screen and (max-width: 850px) {
+    height: calc(100vh - 95px - 90px);
+    height: calc(100svh - 95px - 90px);
+  }
+}
+
+#newemployee {
+  position: absolute;
+  bottom: 64px;
+  right: 47px;
+
+  @media screen and (max-width: 1100px) {
+    top: 35px;
+    right: 20px;
+    height: fit-content;
+  }
+}
+
+.mobile-addons {
+  display: none;
+}
+
+/* ===== Sub-Header ===== */
+.sub-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  @media screen and (max-width: 1330px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0;
+    gap: 15px;
+    align-self: flex-start;
+
+    p {
+      display: none;
+    }
+  }
+
+  h1 {
+    font-size: 61px;
+    margin: 32px 0;
+
+    @media screen and (max-width: 1330px) {
+      margin: 0;
+    }
+  }
+
+  .line {
+    height: 59px;
+    width: 2px;
+    background-color: $secondary-color;
+
+    @media screen and (max-width: 1330px) {
+      width: 100px;
+      height: 2px;
+    }
+  }
+
+  h3 {
+    font-size: 27px;
+    font-weight: 400;
+  }
+}
+
+#sub-header {
+  @media screen and (max-width: 1330px) {
+    display: none;
+  }
+}
+
+#sub-header-mobile {
+  display: none;
+
+  @media screen and (max-width: 1330px) {
+    display: flex;
+  }
+}
+
+.employees-back {
+  display: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 1100px) {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    height: 37px;
+    width: 37px;
+    z-index: 1;
+  }
+
+  @media screen and (max-width: 850px) {
+    right: 25px;
+  }
+}
+
+/* ===== employees List ===== */
+.employeesList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 370px;
+  background-color: white;
+  box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.08);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  @media screen and (max-width: 1100px) {
+    width: 100%;
+    padding-top: 50px;
+  }
+
+  @media screen and (max-width: 850px) {
+  }
+
+  .employee-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+
+    > span {
+      padding: 10px;
+      font-size: 21px;
+      align-self: flex-start;
+      padding-left: 35px;
+    }
+
+    > div {
+      width: 323px;
+      height: 2px;
+      background-color: #d1d1d1;
+      margin: 14px 12px;
+    }
+  }
+}
+
+#employeesOverview {
+  padding: 50px;
+
+  @media screen and (max-width: 1330px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 45px;
+    flex-grow: 1;
+  }
+
+  @media screen and (max-width: 1100px) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    opacity: 0;
+    z-index: -1;
+    background-color: $bg-color;
+
+    &:has(.current-employee-animation) {
+      opacity: 1;
+      z-index: 1;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    &:has(.current-employee-animation) .employees-back {
+      display: block;
+    }
+  }
+}
+
+.add-task-overlay-wrapper {
+  @include dFlex();
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 110;
+
+  @media screen and (max-width: 850px) {
+    background-color: unset;
+    z-index: 100;
+  }
+
+  app-add-task {
+    transition: transform 225ms ease-in-out;
+    transform: translateX(200%);
+
+    @media screen and (max-width: 850px) {
+      transition: unset;
+      transform: unset;
+    }
+  }
+
+  .animate {
+    transform: translateX(0);
+
+    @media screen and (max-width: 850px) {
+      transform: unset;
+    }
+  }
+}
+
+.currentemployee {
+  position: relative;
+  left: 300%;
+  transition: 225ms;
+}
+
+/* Current employee Animation */
+
+.current-employee-animation {
+  left: 0% !important;
+}

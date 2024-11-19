@@ -1,0 +1,33 @@
+@import "../../../../styles.scss";
+@import "../../../../mixin.scss";
+
+.sidebar {
+  @include dFlex($gp: 103px, $jc: space-evenly);
+  flex-direction: column;
+  width: 232px;
+  height: 100vh;
+  height: 100svh;
+  background-color: $main-color;
+  box-shadow: $nuevo;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 101;
+
+  .logo {
+    width: 100px;
+    height: 122px;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .legal-wrapper {
+    width: 100%;
+  }
+}

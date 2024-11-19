@@ -1,0 +1,148 @@
+@import "../../../../../styles.scss";
+@import "../../../../../mixin.scss";
+
+.task-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @include dFlex();
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 110;
+
+  > div {
+    max-height: 90vh;
+    max-height: 90svh;
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 50px;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: $nuevo;
+    font-size: 21px;
+    position: relative;
+    overflow-y: auto;
+  }
+}
+
+#subtask-box-overlay {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.overlay-close-button {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+}
+
+.overlayy-delete-edit-box {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  outline: 1px solid $main-color;
+  cursor: pointer;
+}
+
+.overlay-delete-box {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-edit-box {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $main-color;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.overlay-headline {
+  font-size: 61px;
+  color: $main-color;
+}
+
+.overlay-due-date {
+  display: flex;
+  gap: 25px;
+}
+
+.add-task-form {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.overlay-prio {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  .overview-prio-box {
+    display: flex;
+    padding: 4px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: $nuevo;
+  }
+}
+
+#assigned-to-box {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+}
+
+.assigned-to-display-maximized {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 58px;
+  border: 1px solid white;
+  color: white;
+  font-size: 16px;
+}
+
+/* Prio Colors */
+
+.high {
+  background-color: rgb(255, 61, 0) !important;
+  color: white;
+}
+
+.medium {
+  background-color: rgb(255, 168, 0) !important;
+  color: white;
+}
+
+.low {
+  background-color: rgb(122, 226, 41) !important;
+  color: white;
+}

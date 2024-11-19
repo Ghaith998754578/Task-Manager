@@ -1,0 +1,25 @@
+@import "../../../../styles.scss";
+@import "../../../../mixin.scss";
+
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  width: 100svw;
+  height: 90px;
+
+  z-index: 1;
+
+  @include dFlex($jc: space-around);
+
+  background-color: $main-color;
+  box-shadow: $nuevo;
+
+  app-sidebar-menue-item {
+    @include dFlex();
+    height: 100%;
+    width: 25%;
+  }
+}

@@ -1,0 +1,67 @@
+<app-auth-base>
+  <main>
+    <h1>Log in</h1>
+    <form
+      [formGroup]="loginForm"
+      class="user-form"
+      id="login-form"
+      (ngSubmit)="login()"
+    >
+      <div class="input-wrapper">
+        <input
+          required
+          type="text"
+          placeholder="Username"
+          formControlName="username"
+        />
+        <img src="./assets/img/icons/sign-up-name.svg" alt="" />
+      </div>
+      <div class="input-wrapper">
+        <input
+          required
+          formControlName="password"
+          [type]="passwordIsHidden ? 'password' : 'text'"
+          placeholder="Password"
+        />
+        <img
+          *ngIf="password?.value.length > 0 && !passwordIsHidden"
+          (click)="togglePasswordVisibility()"
+          id="loginPwImg"
+          src="./assets/img/icons/login-password-show.svg"
+          alt=""
+          [style.cursor]="'pointer'"
+        />
+        <img
+          *ngIf="password?.value.length > 0 && passwordIsHidden"
+          (click)="togglePasswordVisibility()"
+          id="loginPwImg"
+          src="./assets/img/icons/login-password-hidden.svg"
+          alt=""
+          [style.cursor]="'pointer'"
+        />
+        <img
+          *ngIf="password?.value.length === 0"
+          id="loginPwImg"
+          src="./assets/img/icons/login-password.svg"
+          alt=""
+        />
+        <div *ngIf="loginError">
+          <div class="error-msg">Wrong Username or Password</div>
+        </div>
+      </div>
+      <input type="submit" id="submit-form" class="d-none" />
+    </form>
+
+    <div class="btn-container">
+      <app-button-wo-icon
+        [colorStyle]="'main-color-style'"
+        [fontSize]="buttonFontSize"
+        [fontWeight]="'700'"
+        [content]="'Log In'"
+        [height]="buttonHeight"
+        [width]="loginButtonWidth"
+        (click)="login()"
+      ></app-button-wo-icon>
+    </div>
+  </main>
+</app-auth-base>

@@ -1,0 +1,225 @@
+@import "./../../../../../styles.scss";
+@import "./../../../../../mixin.scss";
+
+main {
+  @include dFlex();
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 110;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.modal-inner-container {
+  display: flex;
+  width: 1212px;
+  height: 594px;
+  position: absolute;
+  transform: translateX(200%);
+  transition: 400ms ease-in-out;
+
+  @media screen and (max-width: 1300px) {
+    max-width: 99%;
+  }
+
+  @media screen and (max-width: 1100px) {
+    flex-direction: column;
+    width: 90%;
+    height: 90vh;
+    height: 90svh;
+  }
+}
+
+.modal-animation {
+  transform: translateX(0);
+}
+
+.cancel-btn {
+  position: absolute;
+  top: 26px;
+  right: 55px;
+  cursor: pointer;
+
+  @media screen and (max-width: 1100px) {
+    z-index: 3;
+    filter: invert(1) sepia(1) saturate(0%) brightness(106%) contrast(100%);
+  }
+}
+
+/* Left frame */
+.left-frame-add {
+  @include dFlex($ai: flex-start, $gp: 16px);
+
+  flex-direction: column;
+
+  color: white;
+  padding: 66px 46px;
+  background-color: $main-color;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+
+  @media screen and (max-width: 1100px) {
+    border-radius: 0;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding: 36px 26px;
+  }
+
+  img {
+    width: 55px;
+    height: 66px;
+
+    @media screen and (max-width: 1100px) {
+      display: none;
+    }
+  }
+
+  .employee-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 90px;
+      height: 2px;
+      background-color: $secondary-color;
+      position: absolute;
+      bottom: -12px;
+    }
+
+    h1 {
+      font-size: 61px;
+
+      @media screen and (max-width: 1100px) {
+        font-size: 47px;
+      }
+    }
+
+    h2 {
+      font-size: 27px;
+      font-weight: 400;
+    }
+  }
+}
+
+/* Right frame */
+.right-frame-add {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  gap: 65px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+
+  @media screen and (max-width: 1100px) {
+    flex-direction: column;
+    position: relative;
+    border-radius: 0;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    gap: 0;
+  }
+
+  @media screen and (max-width: 850px) {
+    padding-top: 32px;
+  }
+}
+
+.user-form {
+  @include dFlex($gp: 36px);
+  flex-direction: column;
+  width: 422px;
+
+  @media screen and (max-width: 850px) {
+    width: 90%;
+    gap: 20px;
+  }
+
+  .input-wrapper {
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 26.5px;
+      right: 21px;
+      transform: translateY(-50%);
+
+      @media screen and (max-width: 850px) {
+        top: 22.5px;
+      }
+    }
+
+    .error-msg {
+      position: absolute;
+      font-size: 12px;
+      color: $error-color;
+    }
+
+    input {
+      width: 422px;
+      padding: 13px 41px 13px 21px;
+      border-radius: 10px;
+      font-size: 21px;
+      border: 1px solid $sidebar-text-color;
+
+      &::-webkit-inner-spin-button,
+      ::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+      }
+
+      @media screen and (max-width: 850px) {
+        width: 100%;
+        padding: 8px 41px 8px 21px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-size: 21px;
+        color: $sidebar-text-color;
+      }
+    }
+  }
+
+  .button-wrapper {
+    @include dFlex($gp: 25px);
+
+    @media screen and (max-width: 850px) {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+.img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background-color: #d1d1d1;
+  border: 2px solid white;
+  box-shadow: $nuevo;
+  color: white;
+  font-size: 47px;
+  aspect-ratio: 1 / 1;
+
+  @media screen and (max-width: 1100px) {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+  }
+
+  @media screen and (max-width: 1000px) {
+    width: 80px;
+    height: 80px;
+  }
+}

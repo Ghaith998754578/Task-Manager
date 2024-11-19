@@ -1,0 +1,241 @@
+@import "../../../../styles.scss";
+@import "../../../../mixin.scss";
+
+main {
+  min-height: calc(100vh - 95px);
+  min-height: calc(100svh - 95px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: $bg-color;
+  overflow-y: auto;
+
+  @media screen and (max-width: 1350px) {
+    padding-bottom: 30px;
+  }
+
+  @media screen and (max-width: 850px) {
+    justify-content: flex-start;
+    min-height: unset;
+    height: calc(100vh - 95px - 90px);
+    height: calc(100svh - 95px - 90px);
+    padding-bottom: 0;
+    width: 100%;
+  }
+}
+
+.stop-scroll {
+  overflow-y: hidden;
+
+  @media screen and (max-width: 1350px) {
+    height: calc(100vh - 95px);
+    height: calc(100svh - 95px);
+  }
+
+  @media screen and (max-width: 850px) {
+    height: calc(100vh - 95px - 90px);
+    height: calc(100svh - 95px - 90px);
+  }
+}
+
+/* ===== Header =====*/
+
+.board-header {
+  width: 100%;
+  max-width: 1078px;
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (max-width: 1350px) {
+    flex-direction: column;
+    gap: 20px;
+    width: 70%;
+    margin: 30px 0;
+    position: relative;
+  }
+
+  @media screen and (max-width: 850px) {
+    margin-top: 70px;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 47px;
+
+    &::before {
+      @media screen and (max-width: 850px) {
+        content: "Kanban Project Management Tool";
+        position: absolute;
+        font-size: 16px;
+        font-weight: 400;
+        top: -40px;
+      }
+    }
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+
+    @media screen and (max-width: 850px) {
+      gap: 8px;
+    }
+  }
+
+  .input-wrapper {
+    position: relative;
+
+    div {
+      position: absolute;
+      padding-left: 15px;
+      border-left: 1px solid rgb(209, 209, 209);
+      right: 15px;
+    }
+
+    input {
+      width: 251px;
+      height: 51px;
+      padding: 13px 65px 13px 21px;
+      border-radius: 15px;
+      border: 1px solid rgb(168, 168, 168);
+      font-size: 16px;
+      outline: unset;
+
+      &::placeholder {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+/* ===== Drag and Drop =====*/
+
+.drag-and-drop-container {
+  display: flex;
+  gap: 26px;
+  justify-content: space-between;
+
+  @media screen and (max-width: 1350px) {
+    width: 70%;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 850px) {
+    padding-bottom: 26px;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+  }
+}
+
+.drag-and-drop-row {
+  width: 250px;
+  min-height: 661px;
+  background-color: $bg-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+
+  @media screen and (max-width: 1350px) {
+    width: 100%;
+    min-height: 150px;
+    max-height: fit-content;
+  }
+}
+
+.dragarea-hover {
+  border-radius: 30px;
+  background-color: rgb(242, 243, 244);
+}
+
+.drag-and-drop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 21px;
+  font-weight: 700;
+  color: $main-color;
+
+  > div {
+    border: 2px solid $main-color;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 30px;
+
+    &:hover {
+      border: 2px solid $secondary-color;
+      color: $secondary-color;
+
+      img {
+        filter: invert(47%) sepia(28%) saturate(5405%) hue-rotate(164deg)
+          brightness(101%) contrast(101%);
+      }
+    }
+  }
+}
+
+.drag-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  min-height: calc(100% - 58px);
+  max-height: 65vh;
+  overflow-y: auto;
+
+  @media screen and (max-width: 1350px) {
+    flex-grow: 1;
+    max-height: none;
+    min-height: none;
+    height: calc(100% - 58px);
+  }
+}
+
+.add-task-overlay-wrapper {
+  @include dFlex();
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 110;
+
+  @media screen and (max-width: 850px) {
+    background-color: unset;
+    z-index: 100;
+  }
+
+  app-add-task {
+    transition: transform 225ms ease-in-out;
+    transform: translateX(200%);
+
+    @media screen and (max-width: 850px) {
+      transition: unset;
+      transform: unset;
+    }
+  }
+
+  .animate {
+    transform: translateX(0);
+
+    @media screen and (max-width: 850px) {
+      transform: unset;
+    }
+  }
+}

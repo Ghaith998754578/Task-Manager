@@ -1,0 +1,43 @@
+@import "../../../../styles.scss";
+@import "../../../../mixin.scss";
+
+.sidebar-link-wrapper {
+  @include dFlex();
+  color: $sidebar-text-color;
+  padding: 8px;
+  width: 100%;
+  cursor: pointer;
+
+  @media screen and (max-width: 850px) {
+    height: 90%;
+    width: 90%;
+    border-radius: 8px;
+  }
+
+  div {
+    @include dFlex($gp: 20px, $jc: flex-start);
+    width: 140px;
+
+    @media screen and (max-width: 850px) {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    img {
+      height: 25px;
+      width: 25px;
+    }
+
+    span {
+      text-align: center;
+    }
+  }
+}
+
+.sidebar-focus {
+  background-color: $sidebar-focus-color;
+
+  span {
+    color: white;
+  }
+}
